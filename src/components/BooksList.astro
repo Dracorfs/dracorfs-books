@@ -1,0 +1,28 @@
+---
+import BookItem from "./BookItem.astro";
+
+const books = [
+    {
+        id: 'clean-code',
+        title: 'Clean Code: Manual de desarrollo agil de software',
+        img: 'https://m.media-amazon.com/images/I/41xShlnTZTL._SX218_BO1,204,203,200_QL40_FMwebp_.jpg'
+    },
+    {
+        id: 'the-clean-coder',
+        title: 'The Clean Coder: A Code of Conduct for Professional Programmers',
+        img: 'https://m.media-amazon.com/images/I/41Y49+LxTmL.jpg'
+    },
+]
+---
+
+<ul class="grid grid-cols-2 md:grid-cols-3 gap-3 px-4">
+    {
+        books.map(({id, title, img}) =>  {
+            return (
+                <li>
+                    <BookItem id={id} title={title} img={img}/>
+                </li>
+            )
+        })
+    }
+</ul>
