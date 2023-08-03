@@ -9,6 +9,19 @@ if (!info)
     return Astro.redirect("/404", 404)
 ---
 
-<Layout title="Libro">
-    <h1 class="text-9xl">{book}</h1>
+<Layout title={`Libro ${info.title}`}>
+    <main class="m-auto max-w-4xl">
+        <div class="grid grid-cols-2 gap-x-4">
+            <div class="flex flex-col">
+                <picture>
+                    <img src={info.img} alt={`Portada del libro ${info.title}`}>
+                </picture>
+            </div>
+            <aside>
+                <h1>{info.title}</h1>
+                <p>{info.opinion}</p>
+                <p>Autor: {info.author}</p>
+            </aside>
+        </div>
+    </main>
 </Layout>
