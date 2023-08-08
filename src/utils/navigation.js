@@ -11,7 +11,7 @@ const fetchPage = async (url) => {
 }
 
 export const startViewTransition = () => {
-    if (!navigationIsSupported) return
+    if (!navigationIsSupported()) return
 
     window.navigation.addEventListener('navigate', (event) => {
         console.log(event.destination.url)
