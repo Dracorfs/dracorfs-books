@@ -1,10 +1,18 @@
 const navigationIsSupported = () => {
     return Boolean(document.startViewTransition)
 }
+const fetchPage = async (url) => {
+    // load the incoming page using fetch to load the HTML
+    const response = await fetch(url)
+    const text = await response.text()
+    // use regex to only keep the html inside body
+    const [, data] = text.match(/<body[^>]*([\s\S]*)<\/body>/i)
+    return data
+}
 
 export const startViewTransition = () => {
     if (!navigationIsSupported) return
-    
+
     window.navigation.addEventListener('navigate', (event) => {
         console.log(event.destination.url)
         const toUrl = new URL(event.destination.url)
@@ -14,11 +22,7 @@ export const startViewTransition = () => {
 
         event.intercept({
             async handler () {
-                // load the incoming page using fetch to load the HTML
-                const response = await fetch(toUrl.pathname)
-                const text = await response.text()
-                // use regex to only keep the html inside body
-                const [, data] = text.match(/<body[^>]*([\s\S]*)<\/body>/i)
+                const data = await fetchPage(toUrl.pathname)
 
                 // use View Transition API
                 document.startViewTransition(() => {
