@@ -6,7 +6,7 @@ const fetchPage = async (url) => {
     const response = await fetch(url)
     const text = await response.text()
     // use regex to only keep the html inside body
-    const [, data] = text.match(/<body[^>]*([\s\S]*)<\/body>/i)
+    const [, data] = text.match(/<body>([\s\S]*)<\/body>/i)
     return data
 }
 
