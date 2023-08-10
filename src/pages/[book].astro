@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { books } from '../data/books'
 const { book } = Astro.params
 
-const info  = books.find(b => b.id === book)
+const info = books.find(b => b.id === book)
 
 if (!info)
     return Astro.redirect("/404", 404)
@@ -20,7 +20,7 @@ if (!info)
         </a>
       
         <h1
-          class="scale-50 font-black uppercase text-6xl md:text-8xl text-center py-8 px-4"
+          class="scale-50 text-white uppercase text-6xl md:text-8xl text-center py-8 px-4"
           style="view-transition-name: book-title"
         >
           Libros de
@@ -49,9 +49,9 @@ if (!info)
         </div>
   
         <aside class="mt-10 md:mt-0">
-          <h1 class="text-5xl font-black mb-4">{info.title}</h1>
-          <p class="text-lg mb-4">{info.opinion}</p>
-          <p><strong>Autor:</strong> <span class="font-semibold text-gray-800">{info.author}</span></p>
+          <h1 class="text-5xl text-white mb-4">{info.title}</h1>
+          <p class="text-white text-lg mb-4">{info.opinion}</p>
+          <p class="text-white"><strong>Autor:</strong> <span class="font-semibold text-white">{info.author}</span></p>
         </aside>
       </div>
     </main>
