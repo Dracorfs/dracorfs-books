@@ -14,7 +14,6 @@ export const startViewTransition = () => {
     if (!navigationIsSupported()) return
 
     window.navigation.addEventListener('navigate', (event) => {
-        console.log(event.destination.url)
         const toUrl = new URL(event.destination.url)
 
         // Ignore external pages
