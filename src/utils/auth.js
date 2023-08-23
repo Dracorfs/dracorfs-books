@@ -10,7 +10,6 @@ else {
 	populateUI(profile)
 }
 
-
 export async function getAccessToken(clientId, code) {
     const verifier = localStorage.getItem("verifier")
 
